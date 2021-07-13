@@ -602,6 +602,7 @@ static uint8_t next_color(bool *up, uint8_t cur, unsigned int mod)
 	uint8_t next;
 
 	next = cur + (*up ? 1 : -1) * (rand() % mod);
+    next = ~cur; // 强化反差以观察tearing情况
 	if ((*up && next < cur) || (!*up && next > cur)) {
 		*up = !*up;
 		next = cur;

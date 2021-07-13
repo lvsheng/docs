@@ -34,6 +34,7 @@
 #include <unistd.h>
 #include <xf86drm.h>
 #include <xf86drmMode.h>
+#include <utmp.h>
 
 struct modeset_buf;
 struct modeset_dev;
@@ -49,6 +50,10 @@ static void modeset_draw(int fd);
 static void modeset_draw_dev(int fd, struct modeset_dev *dev);
 static void modeset_cleanup(int fd);
 
+static bool use_vblank_rather_than_page_flip = true;
+static bool no_set_crtc = false;
+
+struct timeval tv;
 /*
  * modeset_open() stays the same.
  */
@@ -486,11 +491,54 @@ static void modeset_page_flip_event(int fd, unsigned int frame,
 				    unsigned int sec, unsigned int usec,
 				    void *data)
 {
+    fprintf(stdout, "modeset_page_flip_event\n");
 	struct modeset_dev *dev = data;
 
 	dev->pflip_pending = false;
 	if (!dev->cleanup)
 		modeset_draw_dev(fd, dev);
+}
+// try vblank_handler
+static void modeset_vblank_event(int fd,
+                            unsigned int sequence,
+                            unsigned int tv_sec,
+                            unsigned int tv_usec,
+                            void *user_data)
+{
+    struct modeset_dev *dev = user_data;
+    fprintf(stdout, "modeset_vblank_event fd:%d sequence:%d tv_sec:%d tv_usec:%d user_data:%p\n", fd, sequence, tv_sec, tv_usec, user_data);
+    fprintf(stdout, "  front_buf:%u use_vblank_rather_than_page_flip:%d\n", dev->front_buf, use_vblank_rather_than_page_flip);
+    if (use_vblank_rather_than_page_flip) {
+        struct modeset_buf *buf = &dev->bufs[dev->front_buf];
+
+        if (!no_set_crtc) {
+            gettimeofday(&tv,NULL); fprintf(stdout, "  before drmModeSetCrtc:%ld...\n", 1000000 * tv.tv_sec + tv.tv_usec);
+            // 注意这里会block至下次vsync信号
+            int ret = drmModeSetCrtc(fd,
+                       dev->saved_crtc->crtc_id,
+                       buf->fb,
+                       dev->saved_crtc->x,
+                       dev->saved_crtc->y,
+                       &dev->conn,
+                       1,
+                       &dev->saved_crtc->mode);
+            gettimeofday(&tv,NULL); fprintf(stdout, "  after drmModeSetCrtc:%ld...\n", 1000000 * tv.tv_sec + tv.tv_usec);
+            if (ret) {
+                fprintf(stderr, "drmModeSetCrtc(fd:%d crtc_id:%d buffer_id:%d x:%d y:%d conn:%p mode:%p)\n", fd,
+                       dev->saved_crtc->crtc_id,
+                       buf->fb,
+                       dev->saved_crtc->x,
+                       dev->saved_crtc->y,
+                       &dev->conn,
+                       &dev->saved_crtc->mode);
+                perror("[error] drmModeSetCrtc");
+            } else fprintf(stdout, "  drmModeSetCrtc done\n");
+        }
+
+        dev->pflip_pending = false;
+        if (!dev->cleanup)
+            modeset_draw_dev(fd, dev);
+    }
 }
 
 /*
@@ -547,6 +595,7 @@ static void modeset_page_flip_event(int fd, unsigned int frame,
 
 static void modeset_draw(int fd)
 {
+    fprintf(stdout, "modeset_draw(fd:%d)\n", fd);
 	int ret;
 	fd_set fds;
 	time_t start, cur;
@@ -563,6 +612,7 @@ static void modeset_draw(int fd)
 	 * introduced the page_flip_handler, so we use that. */
 	ev.version = 2;
 	ev.page_flip_handler = modeset_page_flip_event;
+	ev.vblank_handler = modeset_vblank_event;
 
 	/* redraw all outputs */
 	for (iter = modeset_list; iter; iter = iter->next) {
@@ -574,13 +624,19 @@ static void modeset_draw(int fd)
 		modeset_draw_dev(fd, iter);
 	}
 
-	/* wait 5s for VBLANK or input events */
-	while (time(&cur) < start + 5) {
+	/* wait a while for VBLANK or input events */
+    int max_duration = start + 5 * 60;
+	while (time(&cur) < max_duration) {
 		FD_SET(0, &fds);
 		FD_SET(fd, &fds);
-		v.tv_sec = start + 5 - cur;
+		v.tv_sec = max_duration - cur;
 
+        gettimeofday(&tv,NULL);
+        fprintf(stdout, "#>>> modeset_draw before select(fd) cur:%ld...\n", 1000000 * tv.tv_sec + tv.tv_usec);
 		ret = select(fd + 1, &fds, NULL, NULL, &v);
+        gettimeofday(&tv,NULL);
+        fprintf(stdout, "  after select time :%ld ret:%d\n", 1000000 * tv.tv_sec + tv.tv_usec, ret);
+
 		if (ret < 0) {
 			fprintf(stderr, "select() failed with %d: %m\n", errno);
 			break;
@@ -603,6 +659,7 @@ static uint8_t next_color(bool *up, uint8_t cur, unsigned int mod)
 	uint8_t next;
 
 	next = cur + (*up ? 1 : -1) * (rand() % mod);
+    next = ~cur; // 强化反差以观察tearing情况
 	if ((*up && next < cur) || (!*up && next > cur)) {
 		*up = !*up;
 		next = cur;
@@ -650,6 +707,7 @@ static uint8_t next_color(bool *up, uint8_t cur, unsigned int mod)
 
 static void modeset_draw_dev(int fd, struct modeset_dev *dev)
 {
+    fprintf(stdout, "modeset_draw_dev fd:%d dev:%p\n", fd, dev);
 	struct modeset_buf *buf;
 	unsigned int j, k, off;
 	int ret;
@@ -660,17 +718,55 @@ static void modeset_draw_dev(int fd, struct modeset_dev *dev)
 
 	buf = &dev->bufs[dev->front_buf ^ 1];
 	for (j = 0; j < buf->height; ++j) {
-		for (k = 0; k < buf->width; ++k) {
+	//for (j = 0; j < buf->height; j += 4) {
+		//for (k = 0; k < buf->width; ++k) {
+		for (k = 0; k < buf->width; k += 4) {
 			off = buf->stride * j + k * 4;
 			*(uint32_t*)&buf->map[off] =
 				     (dev->r << 16) | (dev->g << 8) | dev->b;
 		}
 	}
 
-	ret = drmModePageFlip(fd, dev->crtc, buf->fb,
-			      DRM_MODE_PAGE_FLIP_EVENT, dev);
+    // 等待vblank信号：
+    // see: https://docs.nvidia.com/drive/nvvib_docs/NVIDIA%20DRIVE%20Linux%20SDK%20Development%20Guide/baggage/group__direct__rendering__manager.html#gadc9d79f4d0195e60d0f8c9665da5d8b2
+    drmVBlank vbl;
+    vbl.request.type = DRM_VBLANK_RELATIVE | DRM_VBLANK_EVENT; // 注意只有DRM_VBLANK_EVENT才会派发事件
+    vbl.request.sequence = 0;
+    vbl.request.signal = (long)dev;
+    //gettimeofday(&tv,NULL); fprintf(stdout, "  before drmWaitVBlank:%ld...\n", 1000000 * tv.tv_sec + tv.tv_usec);
+    ret = drmWaitVBlank(fd, &vbl);
+    //gettimeofday(&tv,NULL); fprintf(stdout, "  after drmWaitVBlank:%ld...\n", 1000000 * tv.tv_sec + tv.tv_usec);
+    if (ret != 0) {
+        perror("[error] drmWaitVBlank");
+    } else {
+        fprintf(stdout, "  drmWaitVBlank success. wait event...\n");
+        // 注意还会走到下面统一处理dev->front_buf的逻辑（vblank事件发生时，直接拿front_buf内容去set crtc）
+    }
+
+    if (!use_vblank_rather_than_page_flip) {
+        ret = drmModePageFlip(fd, dev->crtc, buf->fb,
+                      // flags
+                      // Flags affecting the operation. Supported values are:
+                      //   https://elixir.bootlin.com/linux/latest/source/include/uapi/drm/drm_mode.h#L831
+                      // DRM_MODE_PAGE_FLIP_ASYNC: Flip immediately, not at vblank. (不过在派上试，没有效果。会报无效参数）
+                      //   see: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/include/drm/drm_mode.h?id=10db4e1e4e9a910a26b94045660e5ba7e7c71419#n394
+                      //     这里也没有提到DRM_MODE_PAGE_FLIP_ASYNC的支持
+                      // DRM_MODE_PAGE_FLIP_EVENT: Send page flip event.
+        		      DRM_MODE_PAGE_FLIP_EVENT, dev);
+        		      //DRM_MODE_PAGE_FLIP_ASYNC, dev);
+        // call again will error: Device or resource busy
+        //   see: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/include/drm/drm_mode.h?id=10db4e1e4e9a910a26b94045660e5ba7e7c71419#n394
+        //ret = drmModePageFlip(fd, dev->crtc, buf->fb,
+        //              // flags.
+        //              // Flags affecting the operation. Supported values are:
+        //              // DRM_MODE_PAGE_FLIP_ASYNC: Flip immediately, not at vblank. (不过在派上试，没有效果。会报无效参数）
+        //              // DRM_MODE_PAGE_FLIP_EVENT: Send page flip event.
+        //		      DRM_MODE_PAGE_FLIP_EVENT, dev);
+        //		      //DRM_MODE_PAGE_FLIP_ASYNC, dev);
+    }
+
 	if (ret) {
-		fprintf(stderr, "cannot flip CRTC for connector %u (%d): %m\n",
+		fprintf(stderr, "[error] cannot flip CRTC for connector %u (%d): %m\n",
 			dev->conn, errno);
 	} else {
 		dev->front_buf ^= 1;

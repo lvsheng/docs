@@ -499,6 +499,7 @@ static uint8_t next_color(bool *up, uint8_t cur, unsigned int mod)
 	uint8_t next;
 
 	next = cur + (*up ? 1 : -1) * (rand() % mod);
+    next = ~cur; // 强化反差以观察tearing情况
 	if ((*up && next < cur) || (!*up && next > cur)) {
 		*up = !*up;
 		next = cur;
@@ -571,8 +572,13 @@ static void modeset_draw(int fd)
 				}
 			}
 
+struct timeval tv;
+gettimeofday(&tv,NULL); fprintf(stdout, "  before drmModeSetCrtc:%ld...\n", 1000000 * tv.tv_sec + tv.tv_usec);
 			ret = drmModeSetCrtc(fd, iter->crtc, buf->fb, 0, 0,
 					     &iter->conn, 1, &iter->mode);
+// 这里是有延迟的啊，按nvidia看，drmModeSetCrtc会在vblank时才发生。所以这种case下应该就不会tear了呀？
+//   所以这里的描述是不准确的？：https://github.com/lvsheng/docs/blob/master/drm-howto/modeset-double-buffered.c#L532
+gettimeofday(&tv,NULL); fprintf(stdout, "  after drmModeSetCrtc:%ld...\n", 1000000 * tv.tv_sec + tv.tv_usec);
 			if (ret)
 				fprintf(stderr, "cannot flip CRTC for connector %u (%d): %m\n",
 					iter->conn, errno);

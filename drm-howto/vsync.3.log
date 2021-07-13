@@ -1,0 +1,586 @@
+using card '/dev/dri/card1'
+mode for connector 89 is 1280x720
+modeset_draw(fd:3)
+modeset_draw_dev fd:3 dev:0xaaab09373450
+"首次draw中wait vblank
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313677149...
+"马上收到vblank
+  after select time :1626150313677179 ret:1
+modeset_vblank_event fd:3 sequence:28363 tv_sec:78230 tv_usec:145805 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313694459...
+  after select time :1626150313694504 ret:1
+modeset_vblank_event fd:3 sequence:28364 tv_sec:78230 tv_usec:162473 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313710503...
+  after select time :1626150313710531 ret:1
+modeset_vblank_event fd:3 sequence:28365 tv_sec:78230 tv_usec:179139 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313728418...
+  after select time :1626150313728483 ret:1
+modeset_vblank_event fd:3 sequence:28366 tv_sec:78230 tv_usec:195807 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313744746...
+  after select time :1626150313744792 ret:1
+modeset_vblank_event fd:3 sequence:28367 tv_sec:78230 tv_usec:212478 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313760371...
+  after select time :1626150313760403 ret:1
+modeset_vblank_event fd:3 sequence:28368 tv_sec:78230 tv_usec:229138 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313777569...
+  after select time :1626150313777613 ret:1
+modeset_vblank_event fd:3 sequence:28369 tv_sec:78230 tv_usec:245805 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313793796...
+  after select time :1626150313793873 ret:1
+modeset_vblank_event fd:3 sequence:28370 tv_sec:78230 tv_usec:262469 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313811113...
+  after select time :1626150313811156 ret:1
+modeset_vblank_event fd:3 sequence:28371 tv_sec:78230 tv_usec:279138 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313827092...
+  after select time :1626150313827153 ret:1
+modeset_vblank_event fd:3 sequence:28372 tv_sec:78230 tv_usec:295803 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313845390...
+  after select time :1626150313845460 ret:1
+modeset_vblank_event fd:3 sequence:28373 tv_sec:78230 tv_usec:312471 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313861726...
+  after select time :1626150313861767 ret:1
+modeset_vblank_event fd:3 sequence:28374 tv_sec:78230 tv_usec:329142 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313877680...
+  after select time :1626150313877724 ret:1
+modeset_vblank_event fd:3 sequence:28375 tv_sec:78230 tv_usec:345831 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313893792...
+  after select time :1626150313893834 ret:1
+modeset_vblank_event fd:3 sequence:28376 tv_sec:78230 tv_usec:362470 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313912963...
+  after select time :1626150313913038 ret:1
+modeset_vblank_event fd:3 sequence:28377 tv_sec:78230 tv_usec:379136 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313927160...
+  after select time :1626150313927190 ret:1
+modeset_vblank_event fd:3 sequence:28378 tv_sec:78230 tv_usec:395801 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313945901...
+  after select time :1626150313945966 ret:1
+modeset_vblank_event fd:3 sequence:28379 tv_sec:78230 tv_usec:412472 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313960411...
+  after select time :1626150313960441 ret:1
+modeset_vblank_event fd:3 sequence:28380 tv_sec:78230 tv_usec:429134 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313977707...
+  after select time :1626150313977749 ret:1
+modeset_vblank_event fd:3 sequence:28381 tv_sec:78230 tv_usec:445805 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150313993733...
+  after select time :1626150313993794 ret:1
+modeset_vblank_event fd:3 sequence:28382 tv_sec:78230 tv_usec:462468 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314011119...
+  after select time :1626150314011164 ret:1
+modeset_vblank_event fd:3 sequence:28383 tv_sec:78230 tv_usec:479136 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314027721...
+  after select time :1626150314027766 ret:1
+modeset_vblank_event fd:3 sequence:28384 tv_sec:78230 tv_usec:495803 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314046265...
+  after select time :1626150314046335 ret:1
+modeset_vblank_event fd:3 sequence:28385 tv_sec:78230 tv_usec:512466 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314060834...
+  after select time :1626150314060869 ret:1
+modeset_vblank_event fd:3 sequence:28386 tv_sec:78230 tv_usec:529140 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314079760...
+  after select time :1626150314079832 ret:1
+modeset_vblank_event fd:3 sequence:28387 tv_sec:78230 tv_usec:545800 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314093725...
+  after select time :1626150314093755 ret:1
+modeset_vblank_event fd:3 sequence:28388 tv_sec:78230 tv_usec:562467 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314111873...
+  after select time :1626150314111940 ret:1
+modeset_vblank_event fd:3 sequence:28389 tv_sec:78230 tv_usec:579132 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314127160...
+  after select time :1626150314127191 ret:1
+modeset_vblank_event fd:3 sequence:28390 tv_sec:78230 tv_usec:595798 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314145336...
+  after select time :1626150314145396 ret:1
+modeset_vblank_event fd:3 sequence:28391 tv_sec:78230 tv_usec:612469 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314161710...
+  after select time :1626150314161755 ret:1
+modeset_vblank_event fd:3 sequence:28392 tv_sec:78230 tv_usec:629138 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314177105...
+  after select time :1626150314177138 ret:1
+modeset_vblank_event fd:3 sequence:28393 tv_sec:78230 tv_usec:645800 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314196612...
+  after select time :1626150314196688 ret:1
+modeset_vblank_event fd:3 sequence:28394 tv_sec:78230 tv_usec:662466 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314210875...
+  after select time :1626150314210904 ret:1
+modeset_vblank_event fd:3 sequence:28395 tv_sec:78230 tv_usec:679139 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314228185...
+  after select time :1626150314228228 ret:1
+modeset_vblank_event fd:3 sequence:28396 tv_sec:78230 tv_usec:695801 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314244176...
+  after select time :1626150314244218 ret:1
+modeset_vblank_event fd:3 sequence:28397 tv_sec:78230 tv_usec:712464 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314261272...
+  after select time :1626150314261315 ret:1
+modeset_vblank_event fd:3 sequence:28398 tv_sec:78230 tv_usec:729132 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314278178...
+  after select time :1626150314278224 ret:1
+modeset_vblank_event fd:3 sequence:28399 tv_sec:78230 tv_usec:745799 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314293787...
+  after select time :1626150314293828 ret:1
+modeset_vblank_event fd:3 sequence:28400 tv_sec:78230 tv_usec:762465 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314314196...
+  after select time :1626150314314272 ret:1
+modeset_vblank_event fd:3 sequence:28401 tv_sec:78230 tv_usec:779132 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314327484...
+  after select time :1626150314327514 ret:1
+modeset_vblank_event fd:3 sequence:28402 tv_sec:78230 tv_usec:795803 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314344398...
+  after select time :1626150314344440 ret:1
+modeset_vblank_event fd:3 sequence:28403 tv_sec:78230 tv_usec:812462 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314360517...
+  after select time :1626150314360547 ret:1
+modeset_vblank_event fd:3 sequence:28404 tv_sec:78230 tv_usec:829129 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314377608...
+  after select time :1626150314377651 ret:1
+modeset_vblank_event fd:3 sequence:28405 tv_sec:78230 tv_usec:845796 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314393757...
+  after select time :1626150314393788 ret:1
+modeset_vblank_event fd:3 sequence:28406 tv_sec:78230 tv_usec:862462 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314411305...
+  after select time :1626150314411348 ret:1
+modeset_vblank_event fd:3 sequence:28407 tv_sec:78230 tv_usec:879131 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314428070...
+  after select time :1626150314428112 ret:1
+modeset_vblank_event fd:3 sequence:28408 tv_sec:78230 tv_usec:895797 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314444624...
+  after select time :1626150314444666 ret:1
+modeset_vblank_event fd:3 sequence:28409 tv_sec:78230 tv_usec:912464 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314460530...
+  after select time :1626150314460558 ret:1
+modeset_vblank_event fd:3 sequence:28410 tv_sec:78230 tv_usec:929129 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314480233...
+  after select time :1626150314480301 ret:1
+modeset_vblank_event fd:3 sequence:28411 tv_sec:78230 tv_usec:945795 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314493765...
+  after select time :1626150314493796 ret:1
+modeset_vblank_event fd:3 sequence:28412 tv_sec:78230 tv_usec:962460 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314512186...
+  after select time :1626150314512248 ret:1
+modeset_vblank_event fd:3 sequence:28413 tv_sec:78230 tv_usec:979129 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314527360...
+  after select time :1626150314527393 ret:1
+modeset_vblank_event fd:3 sequence:28414 tv_sec:78230 tv_usec:995793 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314544508...
+  after select time :1626150314544565 ret:1
+modeset_vblank_event fd:3 sequence:28415 tv_sec:78231 tv_usec:12462 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314560353...
+  after select time :1626150314560383 ret:1
+modeset_vblank_event fd:3 sequence:28416 tv_sec:78231 tv_usec:29126 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314577476...
+  after select time :1626150314577517 ret:1
+modeset_vblank_event fd:3 sequence:28417 tv_sec:78231 tv_usec:45795 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314593758...
+  after select time :1626150314593793 ret:1
+modeset_vblank_event fd:3 sequence:28418 tv_sec:78231 tv_usec:62460 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314611511...
+  after select time :1626150314611558 ret:1
+modeset_vblank_event fd:3 sequence:28419 tv_sec:78231 tv_usec:79128 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314627077...
+  after select time :1626150314627107 ret:1
+modeset_vblank_event fd:3 sequence:28420 tv_sec:78231 tv_usec:95793 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314646941...
+  after select time :1626150314647018 ret:1
+modeset_vblank_event fd:3 sequence:28421 tv_sec:78231 tv_usec:112458 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314662288...
+  after select time :1626150314662316 ret:1
+modeset_vblank_event fd:3 sequence:28422 tv_sec:78231 tv_usec:129135 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314677780...
+  after select time :1626150314677842 ret:1
+modeset_vblank_event fd:3 sequence:28423 tv_sec:78231 tv_usec:145792 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314693812...
+  after select time :1626150314693886 ret:1
+modeset_vblank_event fd:3 sequence:28424 tv_sec:78231 tv_usec:162460 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314712555...
+  after select time :1626150314712609 ret:1
+modeset_vblank_event fd:3 sequence:28425 tv_sec:78231 tv_usec:179126 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314728994...
+  after select time :1626150314729036 ret:1
+modeset_vblank_event fd:3 sequence:28426 tv_sec:78231 tv_usec:195797 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314743905...
+  after select time :1626150314743933 ret:1
+modeset_vblank_event fd:3 sequence:28427 tv_sec:78231 tv_usec:212459 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314761147...
+  after select time :1626150314761192 ret:1
+modeset_vblank_event fd:3 sequence:28428 tv_sec:78231 tv_usec:229126 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314777798...
+  after select time :1626150314777866 ret:1
+modeset_vblank_event fd:3 sequence:28429 tv_sec:78231 tv_usec:245791 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314793750...
+  after select time :1626150314793782 ret:1
+modeset_vblank_event fd:3 sequence:28430 tv_sec:78231 tv_usec:262457 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314811100...
+  after select time :1626150314811163 ret:1
+modeset_vblank_event fd:3 sequence:28431 tv_sec:78231 tv_usec:279123 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314827093...
+  after select time :1626150314827125 ret:1
+modeset_vblank_event fd:3 sequence:28432 tv_sec:78231 tv_usec:295789 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314845411...
+  after select time :1626150314845470 ret:1
+modeset_vblank_event fd:3 sequence:28433 tv_sec:78231 tv_usec:312459 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314860470...
+  after select time :1626150314860500 ret:1
+modeset_vblank_event fd:3 sequence:28434 tv_sec:78231 tv_usec:329124 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314879656...
+  after select time :1626150314879738 ret:1
+modeset_vblank_event fd:3 sequence:28435 tv_sec:78231 tv_usec:345789 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314893762...
+  after select time :1626150314893794 ret:1
+modeset_vblank_event fd:3 sequence:28436 tv_sec:78231 tv_usec:362456 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314913124...
+  after select time :1626150314913204 ret:1
+modeset_vblank_event fd:3 sequence:28437 tv_sec:78231 tv_usec:379120 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314927114...
+  after select time :1626150314927144 ret:1
+modeset_vblank_event fd:3 sequence:28438 tv_sec:78231 tv_usec:395788 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314945389...
+  after select time :1626150314945449 ret:1
+modeset_vblank_event fd:3 sequence:28439 tv_sec:78231 tv_usec:412457 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314961620...
+  after select time :1626150314961666 ret:1
+modeset_vblank_event fd:3 sequence:28440 tv_sec:78231 tv_usec:429124 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314977011...
+  after select time :1626150314977046 ret:1
+modeset_vblank_event fd:3 sequence:28441 tv_sec:78231 tv_usec:445788 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150314995452...
+  after select time :1626150314995513 ret:1
+modeset_vblank_event fd:3 sequence:28442 tv_sec:78231 tv_usec:462456 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150315010440...
+  after select time :1626150315010471 ret:1
+modeset_vblank_event fd:3 sequence:28443 tv_sec:78231 tv_usec:479120 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150315027806...
+  after select time :1626150315027854 ret:1
+modeset_vblank_event fd:3 sequence:28444 tv_sec:78231 tv_usec:495788 user_data:0xaaab09373450
+  front_buf:0 use_vblank_rather_than_page_flip:1
+  drmModeSetCrtc done
+modeset_draw_dev fd:3 dev:0xaaab09373450
+  drmWaitVBlank success. wait event...
+#>>> modeset_draw before select(fd) cur:1626150315044362...
+  after select time :1626150315044403 ret:1
+modeset_vblank_event fd:3 sequence:28445 tv_sec:78231 tv_usec:512456 user_data:0xaaab09373450
+  front_buf:1 use_vblank_rather_than_page_flip:1
+
