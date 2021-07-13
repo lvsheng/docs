@@ -1,0 +1,195 @@
+modeset_draw(fd:3)
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991522999...
+  after select time :1626161991528874 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991549135...
+  after select time :1626161991562107 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991581046...
+  after select time :1626161991595512 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991614456...
+  after select time :1626161991628845 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991648397...
+  after select time :1626161991662202 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991681122...
+  after select time :1626161991695505 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991714576...
+  after select time :1626161991728842 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991747922...
+  after select time :1626161991762073 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991802684...
+  after select time :1626161991812148 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991831138...
+  after select time :1626161991845481 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991866184...
+  after select time :1626161991878806 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991897831...
+  after select time :1626161991912047 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991931245...
+  after select time :1626161991945473 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991966160...
+  after select time :1626161991978815 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161991997736...
+  after select time :1626161992012207 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992031183...
+  after select time :1626161992045304 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992066104...
+  after select time :1626161992078857 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992097750...
+  after select time :1626161992112189 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992131554...
+  after select time :1626161992145401 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992165907...
+  after select time :1626161992178796 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992197690...
+  after select time :1626161992212173 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992231185...
+  after select time :1626161992245247 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992265444...
+  after select time :1626161992278617 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992298468...
+  after select time :1626161992312213 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992360732...
+  after select time :1626161992361959 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992381673...
+  after select time :1626161992395407 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992414365...
+  after select time :1626161992428601 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992447782...
+  after select time :1626161992462094 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992481157...
+  after select time :1626161992495546 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992514589...
+  after select time :1626161992528873 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992547946...
+  after select time :1626161992562227 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992581212...
+  after select time :1626161992595529 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992614652...
+  after select time :1626161992628877 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992649195...
+  after select time :1626161992662174 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992681860...
+  after select time :1626161992695413 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992714478...
+  after select time :1626161992728842 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992747995...
+  after select time :1626161992762163 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992782375...
+  after select time :1626161992795498 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992814526...
+  after select time :1626161992828853 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992848031...
+  after select time :1626161992862151 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992881741...
+  after select time :1626161992895377 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992914354...
+  after select time :1626161992928854 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992947928...
+  after select time :1626161992961941 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161992981917...
+  after select time :1626161992995486 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161993014426...
+  after select time :1626161993028847 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161993047938...
+  after select time :1626161993062151 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161993081930...
+  after select time :1626161993095546 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw before select(fd) cur:1626161993114553...
+  after select time :1626161993128846 ret:1
+modeset_page_flip_event
+modeset_draw_dev fd:3 dev:0x55dff0840520
+#>>> modeset_draw be

@@ -265,6 +265,13 @@ static int modeset_find_crtc(int fd, drmModeRes *res, drmModeConnector *conn,
 	uint32_t crtc;
 	struct modeset_output *iter;
 
+	// log all crtc
+    fprintf(stdout, "crtcs:\n ");
+    for (j = 0; j < res->count_crtcs; ++j) {
+        fprintf(stdout, " %d:%d", j, res->crtcs[j]);
+    }
+    fprintf(stdout, "\n");
+
 	/* first try the currently conected encoder+crtc */
 	if (conn->encoder_id)
 		enc = drmModeGetEncoder(fd, conn->encoder_id);
@@ -311,7 +318,7 @@ static int modeset_find_crtc(int fd, drmModeRes *res, drmModeConnector *conn,
 				continue;
 
 			/* check that no other output already uses this CRTC */
-			crtc = res->crtcs[j];
+            crtc = res->crtcs[j];
 			for (iter = output_list; iter; iter = iter->next) {
 				if (iter->crtc.id == crtc) {
 					crtc = 0;
@@ -358,10 +365,13 @@ static int modeset_find_plane(int fd, struct modeset_output *out)
 		fprintf(stderr, "drmModeGetPlaneResources failed: %s\n",
 				strerror(errno));
 		return -ENOENT;
+	} else {
+        fprintf(stdout, "modeset_find_plane: got plane_res. count:%d\n", plane_res->count_planes);
 	}
 
 	/* iterates through all planes of a certain device */
-	for (i = 0; (i < plane_res->count_planes) && !found_primary; i++) {
+//	for (i = 0; (i < plane_res->count_planes) && !found_primary; i++) {
+	for (i = 0; (i < plane_res->count_planes); i++) {
 		int plane_id = plane_res->planes[i];
 
 		drmModePlanePtr plane = drmModeGetPlane(fd, plane_id);
@@ -371,30 +381,41 @@ static int modeset_find_plane(int fd, struct modeset_output *out)
 			continue;
 		}
 
-		/* check if the plane can be used by our CRTC */
-		if (plane->possible_crtcs & (1 << out->crtc_index)) {
-			drmModeObjectPropertiesPtr props =
-				drmModeObjectGetProperties(fd, plane_id, DRM_MODE_OBJECT_PLANE);
+        drmModeObjectPropertiesPtr props =
+                drmModeObjectGetProperties(fd, plane_id, DRM_MODE_OBJECT_PLANE);
 
-			/* Get the "type" property to check if this is a primary
-			 * plane. Type property is special, as its enum value is
-			 * defined in UAPI headers. For the properties that are
-			 * not defined in the UAPI headers, we would have to
-			 * give kernel the property name and it would return the
-			 * corresponding enum value. We could also do this for
-			 * the "type" property, but it would make this simple
-			 * example more complex. The reason why defining enum
-			 * values for kernel properties in UAPI headers is
-			 * deprecated is that string names are easier to both
-			 * (userspace and kernel) make unique and keep
-			 * consistent between drivers and kernel versions. But
-			 * in order to not break userspace, some properties were
-			 * left in the UAPI headers as well.
-			 */
+        fprintf(stdout, "  got plane. count_formats:%d plane_id:%d crtc_id:%d fb_id:%d crtc_x:%d crtc_y:%d "
+                        "x:%d y:%d possible_crtcs:%d gamma_size:%d "
+                        "usable:%d type:%ld"
+                        "\n",
+                plane->count_formats, plane->plane_id, plane->crtc_id, plane->fb_id, plane->crtc_x, plane->crtc_y,
+                plane->x, plane->y, plane->possible_crtcs, plane->gamma_size,
+                plane->possible_crtcs & (1 << out->crtc_index), get_property_value(fd, props, "type")
+                );
+
+        /* check if the plane can be used by our CRTC */
+		if (plane->possible_crtcs & (1 << out->crtc_index)) {
+            /* Get the "type" property to check if this is a primary
+             * plane. Type property is special, as its enum value is
+             * defined in UAPI headers. For the properties that are
+             * not defined in the UAPI headers, we would have to
+             * give kernel the property name and it would return the
+             * corresponding enum value. We could also do this for
+             * the "type" property, but it would make this simple
+             * example more complex. The reason why defining enum
+             * values for kernel properties in UAPI headers is
+             * deprecated is that string names are easier to both
+             * (userspace and kernel) make unique and keep
+             * consistent between drivers and kernel versions. But
+             * in order to not break userspace, some properties were
+             * left in the UAPI headers as well.
+             */
 			if (get_property_value(fd, props, "type") == DRM_PLANE_TYPE_PRIMARY) {
-				found_primary = true;
-				out->plane.id = plane_id;
-				ret = 0;
+                if (!found_primary) {
+                    found_primary = true;
+                    out->plane.id = plane_id;
+                    ret = 0;
+                }
 			}
 
 			drmModeFreeObjectProperties(props);
@@ -635,6 +656,7 @@ static void modeset_output_destroy(int fd, struct modeset_output *out)
  * properties that are not simple types. In this particular case, out->mode is a
  * struct. But we could have another property that expects the id of a blob that
  * holds an array, for instance.
+ * ?
  */
 
 static struct modeset_output *modeset_output_create(int fd, drmModeRes *res,
@@ -775,7 +797,7 @@ static int modeset_atomic_prepare_commit(int fd, struct modeset_output *out,
 					 drmModeAtomicReq *req)
 {
 	struct drm_object *plane = &out->plane;
-	struct modeset_buf *buf = &out->bufs[out->front_buf ^ 1];
+	struct modeset_buf *back_buf = &out->bufs[out->front_buf ^ 1];
 
 	/* set id of the CRTC id that the connector is using */
 	if (set_drm_object_property(req, &out->connector, "CRTC_ID", out->crtc.id) < 0)
@@ -791,7 +813,7 @@ static int modeset_atomic_prepare_commit(int fd, struct modeset_output *out,
 		return -1;
 
 	/* set properties of the plane related to the CRTC and the framebuffer */
-	if (set_drm_object_property(req, plane, "FB_ID", buf->fb) < 0)
+	if (set_drm_object_property(req, plane, "FB_ID", back_buf->fb) < 0)
 		return -1;
 	if (set_drm_object_property(req, plane, "CRTC_ID", out->crtc.id) < 0)
 		return -1;
@@ -799,17 +821,17 @@ static int modeset_atomic_prepare_commit(int fd, struct modeset_output *out,
 		return -1;
 	if (set_drm_object_property(req, plane, "SRC_Y", 0) < 0)
 		return -1;
-	if (set_drm_object_property(req, plane, "SRC_W", buf->width << 16) < 0)
+	if (set_drm_object_property(req, plane, "SRC_W", back_buf->width << 16) < 0)
 		return -1;
-	if (set_drm_object_property(req, plane, "SRC_H", buf->height << 16) < 0)
+	if (set_drm_object_property(req, plane, "SRC_H", back_buf->height << 16) < 0)
 		return -1;
 	if (set_drm_object_property(req, plane, "CRTC_X", 0) < 0)
 		return -1;
 	if (set_drm_object_property(req, plane, "CRTC_Y", 0) < 0)
 		return -1;
-	if (set_drm_object_property(req, plane, "CRTC_W", buf->width) < 0)
+	if (set_drm_object_property(req, plane, "CRTC_W", back_buf->width) < 0)
 		return -1;
-	if (set_drm_object_property(req, plane, "CRTC_H", buf->height) < 0)
+	if (set_drm_object_property(req, plane, "CRTC_H", back_buf->height) < 0)
 		return -1;
 
 	return 0;
@@ -840,18 +862,18 @@ static uint8_t next_color(bool *up, uint8_t cur, unsigned int mod)
 
 static void modeset_paint_framebuffer(struct modeset_output *out)
 {
-	struct modeset_buf *buf;
+	struct modeset_buf *back_buf;
 	unsigned int j, k, off;
 
 	/* draw on back framebuffer */
 	out->r = next_color(&out->r_up, out->r, 5);
 	out->g = next_color(&out->g_up, out->g, 5);
 	out->b = next_color(&out->b_up, out->b, 5);
-	buf = &out->bufs[out->front_buf ^ 1];
-	for (j = 0; j < buf->height; ++j) {
-		for (k = 0; k < buf->width; ++k) {
-			off = buf->stride * j + k * 4;
-			*(uint32_t*)&buf->map[off] =
+    back_buf = &out->bufs[out->front_buf ^ 1];
+	for (j = 0; j < back_buf->height; ++j) {
+		for (k = 0; k < back_buf->width; ++k) {
+			off = back_buf->stride * j + k * 4;
+			*(uint32_t*)&back_buf->map[off] =
 				     (out->r << 16) | (out->g << 8) | out->b;
 		}
 	}
@@ -970,6 +992,7 @@ static void modeset_page_flip_event(int fd, unsigned int frame,
  * atomic commit is performed without the TEST_ONLY flag, but not only before we
  * draw on the framebuffers of the outputs. This is necessary to avoid
  * displaying unwanted content.
+ * ?
  *
  * NOTE: we can't perform an atomic commit without an attached frambeuffer
  * (even when we have DRM_MODE_ATOMIC_TEST_ONLY). It will simply fail.

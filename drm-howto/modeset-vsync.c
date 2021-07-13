@@ -1,3 +1,4 @@
+// todo: still tearing sometimes on ubuntu
 /*
  * modeset - DRM Double-Buffered VSync'ed Modesetting Example
  *
@@ -50,7 +51,7 @@ static void modeset_draw(int fd);
 static void modeset_draw_dev(int fd, struct modeset_dev *dev);
 static void modeset_cleanup(int fd);
 
-static bool use_vblank_rather_than_page_flip = true;
+static bool use_vblank_rather_than_page_flip = false;
 static bool no_set_crtc = false;
 
 struct timeval tv;
@@ -719,8 +720,8 @@ static void modeset_draw_dev(int fd, struct modeset_dev *dev)
 	buf = &dev->bufs[dev->front_buf ^ 1];
 	for (j = 0; j < buf->height; ++j) {
 	//for (j = 0; j < buf->height; j += 4) {
-		//for (k = 0; k < buf->width; ++k) {
-		for (k = 0; k < buf->width; k += 4) {
+		for (k = 0; k < buf->width; ++k) {
+		//for (k = 0; k < buf->width; k += 4) {
 			off = buf->stride * j + k * 4;
 			*(uint32_t*)&buf->map[off] =
 				     (dev->r << 16) | (dev->g << 8) | dev->b;
